@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Ghibli Studio Info</string>
+    <string name="temp_pass_message">Please enter your temporary password that was sent to your email.</string>
+    <string name="settings_message">Please enter your first and last name then press update.</string>
+</resources>
