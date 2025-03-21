@@ -1,345 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android= "http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:verticalScrollbarPosition="right"
-    tools:context=".FilmDetails">
+    android:fillViewport="true">
 
-    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-        android:id="@+id/trailer"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:autoPlay="false"
-        app:showYouTubeButton="false">
-    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+        tools:context=".FilmDetails">
 
-    <LinearLayout
-        android:layout_weight="8"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:weightSum="8">
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <!-- YouTube Player -->
+        <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+            android:id="@+id/trailer"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:autoPlay="false" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Title: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
+        <!-- Film Name -->
+        <TextView
+            android:id="@+id/filmName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/filmname"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/trailer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
 
-                    <TextView
-                        android:id="@+id/filmName"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="FilmName"
-                        android:textColor="@color/black"
-                        android:textSize="17dp">
+        <!-- Original Title -->
+        <TextView
+            android:id="@+id/originalTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/original_titile"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/filmName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-                    </TextView>
+        <!-- Romanised Title -->
+        <TextView
+            android:id="@+id/romanisedTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/romanisedtitleValue"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/originalTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-                </LinearLayout>
+        <!-- Director -->
+        <TextView
+            android:id="@+id/director"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/directorValue"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/romanisedTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-            </LinearLayout>
+        <!-- Producer -->
+        <TextView
+            android:id="@+id/producer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Producer"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/director"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <!-- Release Date -->
+        <TextView
+            android:id="@+id/releaseDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="R.D"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/producer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Original Title: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
+        <!-- Runtime -->
+        <TextView
+            android:id="@+id/runTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="R.T"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/releaseDate"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="20dp" />
 
-                    <TextView
-                        android:id="@+id/originalTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Original Titile"
-                        android:textColor="@color/black"
-                        android:textSize="17dp">
+        <!-- Description Label -->
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Description: "
+            android:textSize="25sp"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toBottomOf="@id/runTime"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
 
-                    </TextView>
+        <!-- Description Text -->
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/descriptionLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
 
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="300dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Romanised: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/romanisedTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="romanisedTitle"
-                        android:textColor="@color/black"
-                        android:textSize="17dp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Director: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/director"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="director"
-                        android:textColor="@color/black"
-                        android:textSize="20sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Producer: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/producer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Producer"
-                        android:textColor="@color/black"
-                        android:textSize="20sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Release Year: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/releaseDate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="R.D"
-                        android:textColor="@color/black"
-                        android:textSize="20sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Runtime(mins): "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/runTime"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="R.T"
-                        android:textColor="@color/black"
-                        android:textSize="20sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Description: "
-                        android:textSize="25dp"
-                        android:textColor="@color/black">
-                    </TextView>
-
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="vertical">
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:verticalScrollbarPosition="right"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:weightSum="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:text="Description"
-                    android:textColor="@color/black"
-                    android:textSize="20sp">
-
-                </TextView>
-
-        </LinearLayout>
-
-    </LinearLayout>
-    </ScrollView>
-
-
-</LinearLayout>
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

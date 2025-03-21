@@ -1,5 +1,6 @@
 package com.example.ghiblistudioinfo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,8 +10,6 @@ import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
@@ -18,7 +17,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import org.json.JSONException;
-import org.json.JSONObject;
+
+import java.util.Objects;
 
 public class FilmDetails extends AppCompatActivity {
 
@@ -30,8 +30,9 @@ public class FilmDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_film_details);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        String url = "https://ghibliapi.herokuapp.com/films/";
+        String url = "https://ghibliapi.vercel.app/films/";
 
         String[] movieId = {"2baf70d1-42bb-4437-b551-e5fed5a87abe", "45db04e4-304a-4933-9823-33f389e8d74d", "12cfb892-aac0-4c5b-94af-521852e46d6a",
                 "cd3d059c-09f4-4ff3-8d63-bc765a5184fa", "ea660b10-85c4-4ae3-8a5f-41cea3648e3e", "0440483e-ca0e-4120-8c50-4c8cd9b965d6",
@@ -49,7 +50,7 @@ public class FilmDetails extends AppCompatActivity {
         };
 
         Intent i = getIntent();
-        int position = i.getExtras().getInt("id");
+        int position = Objects.requireNonNull(i.getExtras()).getInt("id");
 
         filmTitle = findViewById(R.id.filmName);
         originalTitle = findViewById(R.id.originalTitle);
@@ -64,53 +65,33 @@ public class FilmDetails extends AppCompatActivity {
 
         trailer.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
-            public void onReady(YouTubePlayer youTubePlayer) {
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
                 String videoId;
                 switch(position){
-                    case 0: videoId = movieTrailer[position];
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                    case 11:
+                    case 12:
+                    case 13:
+                    case 14:
+                    case 15:
+                    case 16:
+                    case 17:
+                    case 18:
+                    case 19:
+                    case 20:
+                    case 21:
+                        videoId = movieTrailer[position];
                         break;
-                    case 1: videoId = movieTrailer[position];
-                        break;
-                    case 2: videoId = movieTrailer[position];
-                        break;
-                    case 3: videoId = movieTrailer[position];
-                        break;
-                    case 4: videoId = movieTrailer[position];
-                        break;
-                    case 5: videoId = movieTrailer[position];
-                        break;
-                    case 6: videoId = movieTrailer[position];
-                        break;
-                    case 7: videoId = movieTrailer[position];
-                        break;
-                    case 8: videoId = movieTrailer[position];
-                        break;
-                    case 9: videoId = movieTrailer[position];
-                        break;
-                    case 10: videoId = movieTrailer[position];
-                        break;
-                    case 11: videoId = movieTrailer[position];
-                        break;
-                    case 12: videoId = movieTrailer[position];
-                        break;
-                    case 13: videoId = movieTrailer[position];
-                        break;
-                    case 14: videoId = movieTrailer[position];
-                        break;
-                    case 15: videoId = movieTrailer[position];
-                        break;
-                    case 16: videoId = movieTrailer[position];
-                        break;
-                    case 17: videoId = movieTrailer[position];
-                        break;
-                    case 18: videoId = movieTrailer[position];
-                        break;
-                    case 19: videoId = movieTrailer[position];
-                        break;
-                    case 20: videoId = movieTrailer[position];
-                    break;
-                    case 21: videoId = movieTrailer[position];
-                    break;
                     default: videoId = "z4WCaWJgOqM";
                 }
                 youTubePlayer.cueVideo(videoId,0);
@@ -127,36 +108,28 @@ public class FilmDetails extends AppCompatActivity {
 
     private void jsonParse(String url){
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try{
-                    String film = response.getString("title");
-                    filmTitle.setText(film);
-                    String japaneseTitle = response.getString("original_title");
-                    originalTitle.setText(japaneseTitle);
-                    String romanised = response.getString("original_title_romanised");
-                    romanisedTitle.setText(romanised);
-                    String dir = response.getString("director");
-                    director.setText(dir);
-                    String prod = response.getString("producer");
-                    producer.setText(prod);
-                    String relDate = response.getString("release_date");
-                    releaseDate.setText(relDate);
-                    String runT = response.getString("running_time");
-                    runTime.setText(runT);
-                    String descrip = response.getString("description");
-                    description.setText(descrip);
-                } catch (JSONException e){
-                    e.printStackTrace();
-                }
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null, response -> {
+            try{
+                String film = response.getString("title");
+                filmTitle.setText(film);
+                String japaneseTitle = response.getString("original_title");
+                originalTitle.setText(japaneseTitle);
+                String romanised = response.getString("original_title_romanised");
+                romanisedTitle.setText(romanised);
+                String dir = response.getString("director");
+                director.setText(dir);
+                String prod = response.getString("producer");
+                producer.setText(prod);
+                String relDate = response.getString("release_date");
+                releaseDate.setText(relDate);
+                String runT = response.getString("running_time");
+                runTime.setText(runT);
+                String descrip = response.getString("description");
+                description.setText(descrip);
+            } catch (JSONException e){
+                e.printStackTrace();
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                error.printStackTrace();
-            }
-        });
+        }, Throwable::printStackTrace);
         mQueue.add(request);
     }
 }
